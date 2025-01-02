@@ -16,14 +16,14 @@ intents:
           track: "[la ](piste|chanson)"
           album: "[l'|la |le ](album|ep|disque|compilation|single)"
           playlist: "[la ]playlist"
-          radio_station: "[la ][station de](radio))"
+          radio_station: "[la ][station de](radio)"
 
       # TARGET A NAME
       - sentences:
           - "<play> <artist> {artist} <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
           - "<play> <album> {album} [par <artist> {artist}] <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
-          - "<play> <track> {track} [par <artist> {artist}] <on> [l'[le [la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
-          - "<play> <playlist> {playlist} <on> [l'| le|la  ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <track> {track} [par <artist> {artist}] <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <playlist> {playlist} <on> [l'|le| la  ]{name} [<player_devices>] [(en mode) {radio_mode}]"
           - "<play> <radio_station> {radio} <on> [l'|le |la ]{name} [<player_devices>]"
         expansion_rules:
           play: "((joue)|(mets))"
@@ -33,13 +33,13 @@ intents:
           track: "[la ](piste|chanson)"
           album: "[l'|la |le ](album|ep|disque|compilation|single)"
           playlist: "[la ]playlist"
-          radio_station: "[la ][station de](radio))"
+          radio_station: "[la ][station de](radio)"
         requires_context:
           domain: "media_player"
 
       # TARGET AN AREA AND A NAME
       - sentences:
-          - "<play> <artist> {artist} dans [l'[le |la ]<area> <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <artist> {artist} dans [l'|le |la ]<area> <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
           - "<play> <album> {album} [par <artist> {artist}] dans [l'|le |la ]<area> <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
           - "<play> <track> {track} [par <artist> {artist}] dans [l'|le |la ]<area> <on> [l'[le |la ]{name} [<player_devices>][(en mode) {radio_mode}]"
           - "<play> <playlist> {playlist} dans [l'|le |la ]<area> <on> [l'|le |la ]{name} [<player_devices>][(en mode) {radio_mode}]"
@@ -52,7 +52,7 @@ intents:
           track: "[la ](piste|chanson)"
           album: "[l'|la|le ](album|ep|disque|compilation|single)"
           playlist: "[la ]playlist"
-          radio_station: "[la ][station de](radio))"
+          radio_station: "[la ][station de](radio)"
 
       # CONTEXT AWARNESS
       - sentences:
@@ -67,7 +67,7 @@ intents:
           track: "[la ](piste|chanson)"
           album: "[l'|la|le ](album|ep|disque|compilation|single)"
           playlist: "[la ]playlist"
-          radio_station: "[la ][station de](radio))"
+          radio_station: "[la ][station de](radio)"
         requires_context:
           area:
             slot: true
