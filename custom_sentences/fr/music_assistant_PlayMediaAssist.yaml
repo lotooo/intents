@@ -1,0 +1,87 @@
+language: "fr"
+intents:
+  MassPlayMediaAssist:
+    data:
+
+      # TARGET AN AREA
+      - sentences:
+          - "<play> <artist> {artist} dans [l'|la |le ]{area} [(en mode) {radio_mode}]"
+          - "<play> <album> {album} [by <artist> {artist}] dans [l'|le |la ]{area} [(en mode) {radio_mode}]"
+          - "<play> <track> {track} [by <artist> {artist}] dans [l'|le |la ]{area} [(en mode) {radio_mode}]"
+          - "<play> <playlist> {playlist} dans [l'|le |la ]{area} [(en mode) {radio_mode}]"
+          - "<play> <radio_station> {radio} dans [l'|le |la ]{area}"
+        expansion_rules:
+          play: "((joue)|(mets))"
+          artist: "[le |l'|la ](artiste|groupe|chanteur|chanteuse)"
+          track: "[la ](piste|chanson)"
+          album: "[l'|la |le ](album|ep|disque|compilation|single)"
+          playlist: "[la ]playlist"
+          radio_station: "[la ][station de](radio)"
+
+      # TARGET A NAME
+      - sentences:
+          - "<play> <artist> {artist} <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <album> {album} [par <artist> {artist}] <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <track> {track} [par <artist> {artist}] <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <playlist> {playlist} <on> [l'|le| la  ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <radio_station> {radio} <on> [l'|le |la ]{name} [<player_devices>]"
+        expansion_rules:
+          play: "((joue)|(mets))"
+          "on": "(sur|dans)"
+          player_devices: "((speaker)|([media] player))"
+          artist: "[le |l'|la ](artiste|groupe|chanteur|chanteuse)"
+          track: "[la ](piste|chanson)"
+          album: "[l'|la |le ](album|ep|disque|compilation|single)"
+          playlist: "[la ]playlist"
+          radio_station: "[la ][station de](radio)"
+        requires_context:
+          domain: "media_player"
+
+      # TARGET AN AREA AND A NAME
+      - sentences:
+          - "<play> <artist> {artist} dans [l'|le |la ]{area} <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <album> {album} [par <artist> {artist}] dans [l'|le |la ]{area} <on> [l'|le |la ]{name} [<player_devices>] [(en mode) {radio_mode}]"
+          - "<play> <track> {track} [par <artist> {artist}] dans [l'|le |la ]{area} <on> [l'|le |la ]{name} [<player_devices>][(en mode) {radio_mode}]"
+          - "<play> <playlist> {playlist} dans [l'|le |la ]{area} <on> [l'|le |la ]{name} [<player_devices>][(en mode) {radio_mode}]"
+          - "<play> <radio_station> {radio} dans [l'|le |la ]{area} <on> [l'|le |la ]{name} [<player_devices>]"
+        expansion_rules:
+          play: "((joue)|(mets))"
+          player_devices: "((speaker)|([media] player))"
+          "on": "(sur|dans)"
+          artist: "[le |l'|la ](artiste|groupe|chanteur|chanteuse)"
+          track: "[la ](piste|chanson)"
+          album: "[l'|la |le ](album|ep|disque|compilation|single)"
+          playlist: "[la ]playlist"
+          radio_station: "[la ][station de](radio)"
+
+      # CONTEXT AWARNESS
+      - sentences:
+          - "<play> <artist> {artist} [(en mode) {radio_mode}]"
+          - "<play> <album> {album} [par <artist> {artist}] [(en mode) {radio_mode}]"
+          - "<play> <track> {track} [par <artist> {artist}] [(en mode) {radio_mode}]"
+          - "<play> <playlist> {playlist} [(en mode) {radio_mode}]"
+          - "<play> <radio_station> {radio}"
+        expansion_rules:
+          play: "((joue)|(mets))"
+          artist: "[le |l'|la ](artiste|groupe|chanteur|chanteuse)"
+          track: "[la ](piste|chanson)"
+          album: "[l'|la|le ](album|ep|disque|compilation|single)"
+          playlist: "[la ]playlist"
+          radio_station: "[la ][station de](radio)"
+        requires_context:
+          area:
+            slot: true
+lists:
+  artist:
+    wildcard: true
+  album:
+    wildcard: true
+  track:
+    wildcard: true
+  playlist:
+    wildcard: true
+  radio:
+    wildcard: true
+  radio_mode:
+    values:
+      - "radio"
